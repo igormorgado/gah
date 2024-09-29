@@ -1,0 +1,44 @@
+--index-url=https://download.pytorch.org/whl/cu124
+--extra-index-url=https://data.pyg.org/whl/torch-2.4.0+cu124.html
+--extra-index-url=https://pypi.nvidia.com
+--extra-index-url=https://pypi.org/simple
+
+# ML
+curated-transformers
+bitsandbytes
+
+
+# Torch geometric
+torch_geometric
+# pyg_lib @ git+https://github.com/pyg-team/pyg-lib.git
+torch_scatter
+torch_sparse
+torch_cluster
+torch_spline_conv
+ 
+ 
+# NLP
+spacy[cuda12x,transformers,lookups]<4.0
+spacy-alignments
+spacy-curated-transformers
+spacy-experimental
+spacy-legacy
+spacy-llm
+spacy-loggers
+spacy-lookups-data
+spacy-transformers
+tiktoken 
+sentencepiece
+gensim
+coreferee @ git+https://github.com/igormorgado/coreferee.git
+ 
+# Graphs
+neo4j
+networkx
+pygraphviz
+igraph
+  
+# Huggingface
+transformers[sentencepiece]
+datasets
+accelerate

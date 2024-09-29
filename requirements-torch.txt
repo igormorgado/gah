@@ -1,0 +1,25 @@
+--index-url=https://download.pytorch.org/whl/cu124
+--extra-index-url=https://data.pyg.org/whl/torch-2.4.0+cu124.html
+--extra-index-url=https://pypi.nvidia.com
+--extra-index-url=https://pypi.org/simple
+
+# Torch
+torch~=2.4 
+torchaudio
+torchdata
+torchdatasets
+torchmetrics
+torchtext
+torchvision
+lightning
+lightning-fabric
+
+# nvidia
+cugraph-cu12
+cudf-cu12
+cugraph-pyg-cu12
+nx-cugraph-cu12
+ 
+# Tensorboard
+tensorboard
+ 

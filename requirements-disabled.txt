@@ -1,0 +1,27 @@
+# Base
+psutil
+tqdm 
+seaborn
+altair
+hydra
+
+# ML
+scipy
+scikit-image
+scikit-learn
+langchain
+
+# NLP
+nltk
+deplacy
+# rapidfuzz @ git+https://github.com/rapidfuzz/RapidFuzz.git
+# concise_concepts
+
+# Graphs
+# pymgclient --global-option="build_ext" --global-option="--static-openssl=0"
+# gqlalchemy # Depends on old version of networkX 3.5.1
+
+# Stats
+formulaic
+statsmodels
+superset

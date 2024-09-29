@@ -1,0 +1,16 @@
+{
+  "nodes": [
+    {"uuid": 1, "labels": "PERSON",   "name": "Alice", "age": 30},
+    {"uuid": 2, "labels": "PERSON",   "name": "Bob", "age": 35},
+    {"uuid": 3, "labels": "EMPLOYEE", "name": "Charlie", "age": 28},
+    {"uuid": 4, "labels": "COMPANY",  "name": "TechCorp"},
+    {"uuid": 5, "labels": ["EMPLOYEE", "PERSON"], "name": "Alice"}
+  ],
+  "relationships": [
+    {"source": 1, "target": 2, "type": "LIKES",    "since": "2020-01-01", "strength": 0.8},
+    {"source": 2, "target": 4, "type": "WORKS_AT", "since": "2018-05-15", "position": "Manager"},
+    {"source": 3, "target": 4, "type": "WORKS_AT", "since": "2019-03-01", "position": "Developer"},
+    {"source": 5, "target": 4, "type": "WORKS_AT", "since": "2018-01-08", "position": "CEO"}
+  ]
+}
+

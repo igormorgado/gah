@@ -1,0 +1,12 @@
+neo4j:
+    uri: "bolt://localhost:7687"
+    username: "neo4j"
+    database: "neo4j"
+rebel:
+    model_name: "Babelscape/rebel-large"
+spacy:
+    model_name: "en_core_web_sm"
+transformer:
+    model_name: "openlm-research/open_llama_3b_v2"
+    #model_name: "meta-llama/Llama-3.2-1B"
+    #model_name3: "meta-llama/Llama-3.2-3B"
