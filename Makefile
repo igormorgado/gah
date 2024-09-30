@@ -49,15 +49,17 @@ pyvenv:
 	@echo "    make install"
 	@echo
 
+
 langs:
 	@python -m spacy download en_core_web_trf
 	@python -m spacy download en_core_web_lg
 	@python -m spacy download en_core_web_md
 	@python -m spacy download en_core_web_sm
-	@python -m spacy download pt_core_news_sm
-	@python -m spacy download pt_core_news_md
 	@python -m spacy download pt_core_news_lg
+	@python -m spacy download pt_core_news_md
+	@python -m spacy download pt_core_news_sm
 	@python -m coreferee install en
+	# @pip install https://github.com/explosion/spacy-experimental/releases/download/v0.6.1/en_coreference_web_trf-3.4.0a2-py3-none-any.whl
 
 start:
 	@echo Starting Docker NEO4J image.
@@ -66,6 +68,10 @@ start:
 	jupyter lab --no-browser &
 
 uninstall:
+	@echo Removing language packages
+	pip uninstall -y en-core-web-lg en-core-web-md en-core-web-sm en-core-web-trf \
+               		 pt-core-news-lg pt-core-news-md pt-core-news-sm 
+	#	               en-coreference-web-trf 
 	@echo Uninstall python package
 
 purge:

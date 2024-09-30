@@ -18,6 +18,7 @@ torch_spline_conv
  
  
 # NLP
+nltk
 spacy[cuda12x,transformers,lookups]<4.0
 spacy-alignments
 spacy-curated-transformers

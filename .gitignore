@@ -12,6 +12,8 @@ __pycache__/
 
 # Distribution / packaging
 .Python
+wheels/
+wheels
 build/
 develop-eggs/
 dist/
