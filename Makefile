@@ -55,11 +55,11 @@ langs:
 	@python -m spacy download en_core_web_lg
 	@python -m spacy download en_core_web_md
 	@python -m spacy download en_core_web_sm
-	@python -m spacy download pt_core_news_lg
-	@python -m spacy download pt_core_news_md
-	@python -m spacy download pt_core_news_sm
-	@python -m coreferee install en
-	# @pip install https://github.com/explosion/spacy-experimental/releases/download/v0.6.1/en_coreference_web_trf-3.4.0a2-py3-none-any.whl
+	#@python -m spacy download pt_core_news_lg
+	#@python -m spacy download pt_core_news_md
+	#@python -m spacy download pt_core_news_sm
+	#@python -m coreferee install en
+  @pip install --no-deps https://github.com/explosion/spacy-experimental/releases/download/v0.6.1/en_coreference_web_trf-3.4.0a2-py3-none-any.whl
 
 start:
 	@echo Starting Docker NEO4J image.

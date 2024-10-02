@@ -5,14 +5,8 @@
 
 # Torch
 torch~=2.4 
-torchaudio
 torchdata
-torchdatasets
-torchmetrics
 torchtext
-torchvision
-lightning
-lightning-fabric
 
 # nvidia
 cugraph-cu12

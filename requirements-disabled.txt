@@ -1,9 +1,30 @@
 # Base
 psutil
+python-dotenv
+matplotlib
 tqdm 
 seaborn
 altair
 hydra
+
+# Torch
+torchaudio
+torchmetrics
+torchvision
+lightning
+lightning-fabric
+torchdatasets
+
+# Torch geometric
+torch_geometric
+# pyg_lib @ git+https://github.com/pyg-team/pyg-lib.git
+torch_scatter
+torch_sparse
+torch_cluster
+torch_spline_conv
+
+# NLP
+coreferee @ git+https://github.com/igormorgado/coreferee.git
 
 # ML
 scipy

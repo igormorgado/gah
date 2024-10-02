@@ -7,16 +7,6 @@
 curated-transformers
 bitsandbytes
 
-
-# Torch geometric
-torch_geometric
-# pyg_lib @ git+https://github.com/pyg-team/pyg-lib.git
-torch_scatter
-torch_sparse
-torch_cluster
-torch_spline_conv
- 
- 
 # NLP
 nltk
 spacy[cuda12x,transformers,lookups]<4.0
@@ -31,7 +21,6 @@ spacy-transformers
 tiktoken 
 sentencepiece
 gensim
-coreferee @ git+https://github.com/igormorgado/coreferee.git
  
 # Graphs
 neo4j

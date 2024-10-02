@@ -11,15 +11,15 @@ class Neo4jConfig(BaseModel):
 
 
 class SpacyConfig(BaseModel):
-    model_name: str
+    modelname: str
     
 
 class RebelConfig(BaseModel):
-    model_name: str
+    modelname: str
 
 
 class TransformerConfig(BaseModel):
-    model_name: str
+    modelname: str
     
 
 class Config(BaseModel):

@@ -16,8 +16,7 @@ wheel
 matplotlib
 numpy
 pandas
-python-dotenv
-matplotlib
+pydantic
 
 # Extras
 pymediawiki

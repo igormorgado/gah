@@ -154,7 +154,7 @@ class RebelComponent:
         
         return extracted_triplets
     
-    def set_annotations_wiki(self, doc: Doc, triplets: List[dict]):
+    def set_annotations(self, doc: Doc, triplets: List[dict]):
         for triplet in triplets:
             # Remove self-loops (relationships that start and end at the entity)
             if triplet['head'] == triplet['tail']:
@@ -185,7 +185,7 @@ class RebelComponent:
                     }
                 }
 
-    def set_annotations(self, doc: Doc, triplets: List[dict]):
+    def set_annotations_org(self, doc: Doc, triplets: List[dict]):
         """
         The function takes a spacy Doc object and a list of triplets (dictionaries) as input.
         For each triplet, it finds the substring in the Doc object that matches the head and tail of the triplet.

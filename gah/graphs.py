@@ -142,7 +142,7 @@ def run_query(
 ) -> pd.DataFrame | None:
     """Run a neo4j query over a transaction or session and return a dataframe"""
 
-    result = txn.run(query=query, parameters=parameters)
+    result = txn.run(query=query, **parameters)
     columns = result.keys()
     records = [record.values() for record in result]
     if records:
@@ -217,7 +217,6 @@ def extract_node_json(node: dict) -> dict:
 
 def get_all_relationships(
     txn: Session | Transaction | ManagedTransaction,
-    parameters: dict | None = None,
 ) -> list[dict]:
     query = "MATCH ()-[relationship]->() RETURN relationship"
     result = txn.run(query=query, parameters=parameters)
@@ -230,10 +229,9 @@ def get_all_relationships(
 
 def get_all_nodes(
     txn: Session | Transaction | ManagedTransaction,
-    parameters: dict | None = None,
 ) -> list[dict]:
     query = "MATCH (node) RETURN node"
-    result = txn.run(query=query, parameters=parameters)
+    result = txn.run(query=query)
     nodes = [
         extract_node_json(record["node"])
         for record in result
@@ -243,11 +241,10 @@ def get_all_nodes(
 
 def cleanup_database(
     txn: Session | Transaction | ManagedTransaction,
-    parameters: dict | None = None,
 ) -> dict:
     """This query deletes all nodes and relationships in the database"""
     query = "MATCH (n) DETACH DELETE n"
-    result = txn.run(query=query, parameters=parameters)
+    result = txn.run(query=query)
     summary = result.consume()
     return summary
 
@@ -263,29 +260,28 @@ def sanitize_label(label: str) -> str:
         raise ValueError(f"Invalid label: {label}")
 
 
-def create_relationship(txn, relationship, parameters: dict | None = None):
+def create_relationship(txn, relationship):
     type_str = f": {relationship['type']}" if "type" in relationship else ""
     query = (
         "MATCH (source), (target) "
         "WHERE source.uuid = $source AND target.uuid = $target "   # ADD UUID MATCH HERE
         f"CREATE (source)-[r{type_str}]->(target) "
-        "SET r += $props "
+        "SET r += $rel_types "
         "RETURN type(r)"
     )
     # Include all attributes except 'source', 'target', and 'type'
     keys_to_exclude = ['source', 'target', 'type']
-    props = {k: v for k, v in relationship.items() if k not in keys_to_exclude}
+    rel_types = {k: v for k, v in relationship.items() if k not in keys_to_exclude}
 
     txn.run(
         query,
         source=relationship["source"],
         target=relationship["target"],
-        props=props,
-        parameters=parameters
+        rel_types=rel_types,
     )
 
 
-def create_node(txn, node, parameters: dict | None = None):
+def create_node(txn, node):
     if isinstance(node.get("labels"), str):
         node["labels"] = [node["labels"]]
     # Handle multiple labels
@@ -293,13 +289,13 @@ def create_node(txn, node, parameters: dict | None = None):
     labels_str = ':' + ':'.join(sanitized_labels)
 
     keys_to_exclude = ["labels"]
-    props = {k: v for k, v in node.items() if k not in keys_to_exclude}
+    node_types = {k: v for k, v in node.items() if k not in keys_to_exclude}
 
     if "uuid" not in props:
         props["uuid"] = uuid.uuid4()
 
     query = (
-        f"CREATE (n{labels_str} $props)"
+        f"CREATE (n{labels_str} $node_types)"
     )
 
-    txn.run(query, props=props, parameters=parameters)
+    txn.run(query, node_types=node_types)
