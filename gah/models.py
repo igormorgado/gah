@@ -14,11 +14,13 @@ class Neo4jNode(BaseModel):
     labels: list[str] | None = None
     properties: dict[str, Any] | None = None
 
+
 class TextualFeatures(BaseModel):
     text: str | None = None
     lemma: str | None = None
     pos: str | None = None
     tag: str | None = None
+
 
 class Token(Neo4jNode):
     # Textual Feature
